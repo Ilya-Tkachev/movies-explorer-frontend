@@ -1,0 +1,25 @@
+.not-found {
+    text-align: center;
+}
+
+.not-found__title {
+    margin: 0;
+    margin-top: 246px;
+    margin-bottom: 5px;
+    font-weight: normal;
+    font-size: 140px;
+    line-height: 169px;
+}
+
+.not-found__subtitle {
+    margin-bottom: 184px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.not-found__link {
+    font-size: 14px;
+    text-decoration: none;
+    color: #3456F3;
+}

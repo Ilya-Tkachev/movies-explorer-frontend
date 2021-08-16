@@ -1,0 +1,24 @@
+.movies {
+    padding: 80px 70px 79px;
+}
+
+.movies__gellery {
+    margin-top: 73px;
+    display: grid;
+    justify-content: center;
+    grid-row-gap: 38px;
+    grid-column-gap: 20px;
+    grid-template-columns: repeat(auto-fit, 270px);
+}
+
+.movies__more {
+    margin-top: 50px;
+    margin-bottom: 70px;
+    width: 100%;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+    background: #F9F9F9;
+    font-size: 12px;
+    line-height: 15px;
+}

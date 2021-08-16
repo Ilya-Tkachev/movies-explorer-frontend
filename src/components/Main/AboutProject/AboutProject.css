@@ -1,0 +1,72 @@
+.about-project {
+    margin: 110px 70px 110px;
+}
+
+.about-project__headline {
+    margin: 0;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 27px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid black;
+}
+
+.about-project__two-column-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+    margin-bottom: 110px;
+}
+
+.about-project__column {
+    width: 550px;
+}
+
+.about-project__subheading {
+    margin: 0;
+    margin-bottom: 26px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.about-project__text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.about-project__progress-bar {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    row-gap: 14px;
+    justify-content: center;
+    text-align: center;
+}
+
+.about-project__progress-backend {
+    background-color: #2BE080;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-project__progress-frontend {
+    background-color: #F2F2F2;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-project__progress-bar-text {
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+}

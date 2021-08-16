@@ -1,0 +1,23 @@
+.nav-tab {
+    height: 66px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-left: 502px;
+}
+
+.nav-bar__list-item {
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    text-decoration: underline;
+    margin-right: 40px;
+}
