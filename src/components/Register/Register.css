@@ -1,5 +1,5 @@
 .registration {
-    width: 396px;
+    max-width: 396px;
     margin: 70px auto;
 }
 
@@ -61,5 +61,29 @@
 @media (max-width: 769px) {
     .registration {
         margin-top: 232px;
+    }
+}
+
+@media (max-width: 400px) {
+    .registration {
+        margin-top: 56px;
+    }
+    .registration__logo {
+        margin-bottom: 50px;
+        margin-left: 40%;
+    }
+    .registration__title {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+    .registration__button {
+        margin-top: 157px;
+        margin-bottom: 14px;
+        font-size: 12px;
+        line-height: 14.5px;
+    }
+    .registration__text {
+        font-size: 12px;
+        line-height: 14.5px;
     }
 }

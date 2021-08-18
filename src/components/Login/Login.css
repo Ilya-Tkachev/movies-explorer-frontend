@@ -1,5 +1,5 @@
 .login{
-    width: 396px;
+    max-width: 396px;
     margin: 70px auto;
 }
 
@@ -64,5 +64,29 @@
     }
     .login__button {
         margin-top: 179px;
+    }
+}
+
+@media (max-width: 400px) {
+    .login {
+        margin-top: 56px;
+    }
+    .login__logo {
+        margin-bottom: 50px;
+        margin-left: 40%;
+    }
+    .login__title {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+    .login__button {
+        margin-top: 157px;
+        margin-bottom: 14px;
+        font-size: 12px;
+        line-height: 14.5px;
+    }
+    .login__text {
+        font-size: 12px;
+        line-height: 14.5px;
     }
 }

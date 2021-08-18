@@ -33,3 +33,18 @@
         grid-column-gap: 30px;
     }
 }
+
+@media (max-width: 400px) {
+    .movies {
+        padding: 60px 14px 79px;
+    }
+
+    .movies__gellery {
+        grid-row-gap: 30px;
+        grid-column-gap: 30px;
+    }
+
+    .movies__more {
+        margin-bottom: 80px;
+    }
+}

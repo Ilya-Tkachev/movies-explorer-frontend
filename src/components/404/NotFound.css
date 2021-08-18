@@ -29,3 +29,20 @@
         margin-top: 408px;
     }
 }
+
+@media (max-width: 400px) {
+    .not-found__title {
+        margin-top: 329px;
+        margin-bottom: 10px;
+        font-size: 80px;
+        line-height: 96px;
+    }
+    .not-found__subtitle {
+        margin-bottom: 284px;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .not-found__link {
+        font-size: 12px;
+    }
+}
