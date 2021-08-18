@@ -34,21 +34,27 @@ function Register({ isSuccessRegistrationIconOpen, isFailedRegistrationIconOpen,
     return (
         <div className="registration">
             <Link to="/">
-                <img className="registration__logo" src={logoPath} alt="Изображение Лого" />
+                <img className="registration__logo object-hower" src={logoPath} alt="Изображение Лого" />
             </Link>
             <h2 className="registration__title">Добро пожаловать!</h2>
             <form className="registration-form" onSubmit={handleSubmit}>
                 <p className="registration__input-title">Имя</p>
-                <input className="registration__input" placeholder="Name" type="string" onChange={handleUserNameChange} value={userName} required />
+                <input id="registration-name-input" className="registration__input" placeholder="Name" name="name" type="text" onChange={handleUserNameChange} value={userName} required minLength={2} maxLength={50} autoComplete="off"/>
+                <span className="form__input-error" id="registration-name-input-error" />
+
                 <p className="registration__input-title">E-mail</p>
-                <input className="registration__input" placeholder="Почта" type="email" onChange={handleEmailChange} value={email} required />
+                <input id="registration-email-input" className="registration__input" placeholder="Почта" name="email" type="email" onChange={handleEmailChange} value={email} required minLength={2} maxLength={40} autoComplete="off"/>
+                <span className="form__input-error" id="registration-email-input-error" />
+
                 <p className="registration__input-title">Пароль</p>
-                <input className="registration__input" placeholder="Password" type="password" onChange={handlePasswordChange} value={password} required />
-                <button className="registration__button" type="submit">Зарегистрироваться</button>
+                <input id="registration-password-input" className="registration__input" placeholder="Password" name="password" type="password" onChange={handlePasswordChange} value={password} required minLength={2} maxLength={40} autoComplete="off"/>
+                <span className="form__input-error" id="registration-password-input-error" />
+                
+                <button className="registration__button object-hower" type="submit">Зарегистрироваться</button>
             </form>
-            <p className="registration__text" href="">
+            <p className="registration__text">
                 Уже зарегистрированы? &ensp;
-                <Link to="/login" className="registration__link">Войти</Link>
+                <Link to="/login" className="registration__link object-hower">Войти</Link>
             </p>
         </div>
     );

@@ -56,7 +56,7 @@ function Movies({ /*cards,*/ onCardClick, onCardLike, onCardDelete }) {
                     return (<MovieCard key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} />);
                 })}
             </section>
-            <button className="movies__more" type="button">Еще</button>
+            <button className="movies__more object-hower" type="button">Еще</button>
         </section>
     );
 }

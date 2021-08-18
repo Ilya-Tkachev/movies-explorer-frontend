@@ -23,19 +23,23 @@ function Login({ onLogin }) {
     return (
         <div className="login">
             <Link to="/">
-                <img className="login__logo" src={logoPath} alt="Изображение Лого" />
+                <img className="login__logo object-hower" src={logoPath} alt="Изображение Лого" />
             </Link>
             <h2 className="login__title">Рады видеть!</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <p className="login__input-title">E-mail</p>
-                <input className="login__input" placeholder="Почта" type="email" onChange={handleEmailChange} value={email} required />
+                <input id="auth-login-input" className="login__input" placeholder="Почта" name="email" type="email" onChange={handleEmailChange} value={email} required minLength={2} maxLength={40} autoComplete="off"/>
+                <span className="form__input-error" id="auth-login-input-error" />
+
                 <p className="login__input-title">Пароль</p>
-                <input className="login__input" placeholder="Password" type="password" onChange={handlePasswordChange} value={password} required />
-                <button className="login__button" type="submit">Войти</button>
+                <input id="auth-password-input" className="login__input" placeholder="Password" name="password" type="password" onChange={handlePasswordChange} value={password} required minLength={2} maxLength={40} autoComplete="off"/>
+                <span className="form__input-error" id="auth-password-input-error" />
+
+                <button className="login__button object-hower" type="submit">Войти</button>
             </form>
             <p className="login__text" href="">
                 Еще не зарегистрированы? &ensp;
-                <Link to="/register" className="login__link">Регистрация</Link>
+                <Link to="/register" className="login__link object-hower">Регистрация</Link>
             </p>
         </div>
     );

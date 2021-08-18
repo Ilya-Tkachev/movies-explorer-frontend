@@ -20,6 +20,8 @@
 .search-form__form {
     margin-left: 20px;
     border: none;
+    width: 90%;
+    outline: none;
 }
 
 .search-form__button {

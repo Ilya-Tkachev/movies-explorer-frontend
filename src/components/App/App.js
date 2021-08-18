@@ -44,8 +44,7 @@ function App() {
   }, []);
 
   function closeAllPopups() {
-    setIsSuccessRegistrationIconOpen(false);
-    setIsFailedRegistrationIconOpen(false);
+    
   }
 
   function handleRegistration(email, password) {
@@ -85,7 +84,7 @@ function App() {
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
-        <Header onLogout={handleLogout} email={email} />
+        <Header />
         <Switch>
 
           <Route exact path='/register'>

@@ -1,0 +1,88 @@
+.heder__flex-continer {
+    display: flex;
+    align-items: center;
+}
+
+.header__links {
+    text-decoration: none;
+    color: black;
+}
+
+.header__link {
+    margin: 0;
+    margin-right: 20px;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.header__link-underlined {
+    padding-bottom: 7px;
+    border-bottom: 1px solid black;
+}
+
+.header__link-fatten {
+    font-weight: 500;
+}
+
+.header__cabinet {
+    display: flex;
+    align-items: center;
+}
+
+.header__cabinet-icon {
+    width: 26px;
+    height: 30px;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+}
+
+.header__cabinet-icon1 {
+    width: 11.5px;
+    height: 14px;
+    margin: 25% auto;
+    background-image: url('../../images/cabinet-icon.svg');
+}
+
+.header__menu {
+    display: none;
+    margin: 0;
+    padding: 0;
+    outline-style: none;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background-color: white;
+}
+
+@media (max-width: 769px) {
+    .heder__flex-continer {
+        display: none;
+    }
+
+    .header__menu {
+        display: block;
+    }
+
+    .header__link {
+        margin-right: 0;
+        margin-bottom: 28px;
+        font-size: 18px;
+        line-height: 21.78px;
+        font-weight: 500;
+    }
+
+    .header__cabinet {
+        margin-top: 416px;
+    }
+}
+
+@media (max-width: 400px) {
+    .header__menu {
+        width: 42px;
+        height: 40px;
+    }
+}
+

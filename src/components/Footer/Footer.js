@@ -14,9 +14,9 @@ function Footer() {
                     <div className="footer__two-columns">
                         <p className="footer__year">© 2020</p>
                         <li className="footer__social-links">
-                            <ul className="footer__social-links-item"><a className="footer__social-link" href="https://praktikum.yandex.ru/" target="_blank" rel="noopener noreferrer">Яндекс.Практикум</a></ul>
-                            <ul className="footer__social-links-item"><a className="footer__social-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">Github</a></ul>
-                            <ul className="footer__social-links-item"><a className="footer__social-link" href="https://ru-ru.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></ul>
+                            <ul className="footer__social-links-item"><a className="footer__social-link object-hower" href="https://praktikum.yandex.ru/" target="_blank" rel="noopener noreferrer">Яндекс.Практикум</a></ul>
+                            <ul className="footer__social-links-item"><a className="footer__social-link object-hower" href="https://github.com/" target="_blank" rel="noopener noreferrer">Github</a></ul>
+                            <ul className="footer__social-links-item"><a className="footer__social-link object-hower" href="https://ru-ru.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></ul>
                         </li>
                     </div>
                 </div>;

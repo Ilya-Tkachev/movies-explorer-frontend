@@ -7,3 +7,23 @@
     flex-direction: column;
     font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
+
+.object-hower {
+    opacity: 1;
+    transition: opacity .5s ease-out;
+ }
+
+.object-hower:hover {
+    opacity: .6;
+}
+
+.form__input-error {
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    height: 12px;
+}

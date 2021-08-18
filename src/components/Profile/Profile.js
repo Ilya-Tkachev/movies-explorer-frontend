@@ -16,8 +16,8 @@ function Profile() {
                     <p className="profile__text profile__text-weight-400">pochta@yandex.ru</p>
                 </div>
             </div>
-            <button className="profile__button-edit">Редактировать</button>
-            <Link to="/register" className="profile__link-logout">Выйти из аккаунта</Link>
+            <button className="profile__button-edit object-hower">Редактировать</button>
+            <Link to="/register" className="profile__link-logout object-hower">Выйти из аккаунта</Link>
         </div>
     );
 }

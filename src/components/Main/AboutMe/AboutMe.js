@@ -14,12 +14,11 @@ function AboutMe() {
             С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
           <ul className="about-me__social-links">
-            <li><a className="about-me__social-link" href="https://ru-ru.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-            <li><a className="about-me__social-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">Github</a></li>
+            <li><a className="about-me__social-link object-hower" href="https://ru-ru.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a className="about-me__social-link object-hower" href="https://github.com/" target="_blank" rel="noopener noreferrer">Github</a></li>
           </ul>
         </div>
-        <div className="about-me__photo">
-        </div>
+        <div className="about-me__photo"></div>
       </div>
     </div>
   );
