@@ -4,7 +4,6 @@
 }
 
 .registration__logo {
-    margin-top: 70px;
     margin-bottom: 40px;
     object-fit: cover;
 }
@@ -57,4 +56,10 @@
 
 .registration__link {
     text-decoration: none;
+}
+
+@media (max-width: 769px) {
+    .registration {
+        margin-top: 232px;
+    }
 }

@@ -55,3 +55,15 @@
     line-height: 16px;
     color: #FF004D;
 }
+
+@media (max-width: 769px) {
+    .profile {
+        margin-top: 236px;
+    }
+    .profile__title {
+        margin-bottom: 96px;
+    }
+    .profile__user-data {
+        margin-bottom: 210px;
+    }
+}

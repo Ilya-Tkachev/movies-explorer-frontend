@@ -3,14 +3,16 @@
     background-color: black;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .nav-bar__links {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    margin-left: 502px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 40px;
 }
 
 .nav-bar__list-item {
@@ -19,5 +21,14 @@
     font-size: 13px;
     line-height: 16px;
     text-decoration: underline;
-    margin-right: 40px;
+}
+
+@media (max-width: 400px) {
+    .nav-bar__links {
+        grid-column-gap: 24px;
+    }
+
+    .nav-bar__list-item {
+        font-size: 11px;
+    }
 }

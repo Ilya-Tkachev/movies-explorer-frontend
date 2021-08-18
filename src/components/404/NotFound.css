@@ -23,3 +23,9 @@
     text-decoration: none;
     color: #3456F3;
 }
+
+@media (max-width: 769px) {
+    .not-found__title {
+        margin-top: 408px;
+    }
+}

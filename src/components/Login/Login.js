@@ -25,7 +25,7 @@ function Login({ onLogin }) {
             <Link to="/">
                 <img className="login__logo" src={logoPath} alt="Изображение Лого" />
             </Link>
-            <h2 className="login__title">Рады втдеть!</h2>
+            <h2 className="login__title">Рады видеть!</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <p className="login__input-title">E-mail</p>
                 <input className="login__input" placeholder="Почта" type="email" onChange={handleEmailChange} value={email} required />

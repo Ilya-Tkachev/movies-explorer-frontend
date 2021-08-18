@@ -11,37 +11,37 @@ function Techs() {
       <ul className="techs__links">
         <li>
           <a href="https://developer.mozilla.org/ru/docs/Web/HTML" className="techs__list-item-text" target="_blank" rel="noopener noreferrer">
-            <button className="techs__list-item">HTML</button>
+            <div className="techs__list-item">HTML</div>
           </a>
         </li>
         <li>
           <a href="https://developer.mozilla.org/ru/docs/Web/CSS" className="techs__list-item-text" target="_blank" rel="noopener noreferrer">
-            <button className="techs__list-item">CSS</button>
+            <div className="techs__list-item">CSS</div>
           </a>
         </li>
         <li>
           <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript" className="techs__list-item-text" target="_blank" rel="noopener noreferrer">
-            <button className="techs__list-item">JS</button>
+            <div className="techs__list-item">JS</div>
           </a>
         </li>
         <li>
           <a href="https://ru.reactjs.org/" className="techs__list-item-text" target="_blank" rel="noopener noreferrer">
-            <button className="techs__list-item">React</button>
+            <div className="techs__list-item">React</div>
           </a>
         </li>
         <li>
           <a href="https://github.com/" className="techs__list-item-text" target="_blank" rel="noopener noreferrer">
-            <button className="techs__list-item">Git</button>
+            <div className="techs__list-item">Git</div>
           </a>
         </li>
         <li>
           <a href="https://expressjs.com/ru/" className="techs__list-item-text" target="_blank" rel="noopener noreferrer">
-            <button className="techs__list-item">Express.js</button>
+            <div className="techs__list-item">Express.js</div>
           </a>
         </li>
         <li>
           <a href="https://www.mongodb.com/" className="techs__list-item-text" target="_blank" rel="noopener noreferrer">
-            <button className="techs__list-item">mongoDB</button>
+            <div className="techs__list-item">mongoDB</div>
           </a>
         </li>
       </ul>

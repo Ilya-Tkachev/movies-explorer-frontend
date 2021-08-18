@@ -12,14 +12,11 @@
 }
 
 .about-project__two-column-text {
-    display: flex;
-    justify-content: space-between;
     margin-top: 70px;
     margin-bottom: 110px;
-}
-
-.about-project__column {
-    width: 550px;
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 40px;
 }
 
 .about-project__subheading {
@@ -40,7 +37,7 @@
 
 .about-project__progress-bar {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4fr;
     row-gap: 14px;
     justify-content: center;
     text-align: center;
@@ -69,4 +66,71 @@
     font-size: 14px;
     line-height: 17px;
     color: #A0A0A0;
+}
+
+@media (max-width: 769px) {
+    .about-project {
+        margin: 90px 50px 90px;
+    }
+
+    .about-project__two-column-text {
+        margin-bottom: 93px;
+        column-gap: 30px;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .about-project {
+        margin: 70px 18px 69px;
+    }
+
+    .about-project__headline {
+        font-size: 18px;
+        line-height: 21px;
+        padding-bottom: 28px;
+    }
+
+    .about-project__two-column-text {
+        margin-top: 60px;
+        margin-bottom: 60px;
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 56px;
+    }
+
+    .about-project__subheading {
+        margin-bottom: 16px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+    }
+    
+    .about-project__text {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about-project__progress-bar {
+        row-gap: 10px;
+    }
+
+    .about-project__progress-backend {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .about-project__progress-frontend {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .about-project__progress-bar-text {
+        font-size: 11px;
+        line-height: 13px;
+    }
+    
 }

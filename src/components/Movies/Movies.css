@@ -8,7 +8,7 @@
     justify-content: center;
     grid-row-gap: 38px;
     grid-column-gap: 20px;
-    grid-template-columns: repeat(auto-fit, 270px);
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 
 .movies__more {
@@ -21,4 +21,15 @@
     background: #F9F9F9;
     font-size: 12px;
     line-height: 15px;
+}
+
+@media (max-width: 769px) {
+    .movies {
+        padding: 60px 30px 0px;
+    }
+
+    .movies__gellery {
+        grid-row-gap: 30px;
+        grid-column-gap: 30px;
+    }
 }

@@ -9,9 +9,10 @@ function SearchForm() {
                 <button className="search-form__button"></button>
             </div>
             <div className="search-form__switcher">
-                <label className="search-form__switcher-title">Короткометражки
-                    <input className="search-form__switcher-invisible" type="checkBox"></input>
-                    <span className="search-form__switcher-visible"></span>
+                <div className="search-form__switcher-title">Короткометражки</div>
+                <label className="switch">
+                    <input type="checkBox"></input>
+                    <span class="slider round"></span>
                 </label>
             </div>
         </div>
