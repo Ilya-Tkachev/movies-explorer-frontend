@@ -1,3 +1,4 @@
+import React from 'react';
 import '../../index.css';
 import './App.css';
 import ProtectedRoute from '../ProtectedRoutes/ProtectedRoute';
@@ -11,8 +12,8 @@ import Footer from '../Footer/Footer';
 import NotFound from '../404/NotFound'
 //import api from '../utils/api';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import React from 'react';
 import { Switch, Route, useHistory } from "react-router-dom";
+import { HOME, LOGIN, REGISTER, PROFILE, MOVIES, SAVED_MOVIES} from '../../utils/urlConstants'
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState(undefined);
@@ -88,7 +89,7 @@ function App() {
         <Header />
         <Switch>
 
-          <Route exact path='/register'>
+          <Route exact path={REGISTER}>
             <Register
               isSuccessRegistrationIconOpen={isSuccessRegistrationIconOpen}
               isFailedRegistrationIconOpen={isFailedRegistrationIconOpen}
@@ -97,24 +98,24 @@ function App() {
             />
           </Route>
 
-          <Route exact path='/login'>
+          <Route exact path={LOGIN}>
             <Login onLogin={handleLogin} tokenCheck={() => { }} />
           </Route>
 
 
-          <ProtectedRoute path='/profile' component={Profile} isLoggedIn={isLoggedIn}
+          <ProtectedRoute path={PROFILE} component={Profile} isLoggedIn={isLoggedIn}
             currentUser={currentUser}
           />
 
-          <ProtectedRoute path='/movies' component={Movies} isLoggedIn={isLoggedIn}
+          <ProtectedRoute path={MOVIES} component={Movies} isLoggedIn={isLoggedIn}
             currentUser={currentUser}
           />
 
-          <ProtectedRoute path='/savedMovies' component={Movies} isLoggedIn={isLoggedIn}
+          <ProtectedRoute path={SAVED_MOVIES} component={Movies} isLoggedIn={isLoggedIn}
             currentUser={currentUser}
           />
 
-          <Route exact path='/'>
+          <Route exact path={HOME}>
             <Main />
           </Route>
 

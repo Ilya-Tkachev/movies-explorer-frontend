@@ -3,13 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import logoPath from '../../images/logo.svg';
+import { HOME, PROFILE, MOVIES, SAVED_MOVIES} from '../../utils/urlConstants'
 
 function Header() {
     const location = useLocation();
 
     const render = () => {
         var headerHtml = undefined;
-        if (location.pathname === '/') {
+        if (location.pathname === HOME) {
             headerHtml = (
                 <header className="header header-main">
                     <Link to="/">
@@ -23,7 +24,7 @@ function Header() {
                     </div>
                 </header>
             )
-        } else if (location.pathname === '/profile' || location.pathname === '/movies' || location.pathname === '/savedMovies') {
+        } else if (location.pathname === PROFILE || location.pathname === MOVIES || location.pathname === SAVED_MOVIES) {
             headerHtml = (
                 <header className="header">
                     <Link to="/">

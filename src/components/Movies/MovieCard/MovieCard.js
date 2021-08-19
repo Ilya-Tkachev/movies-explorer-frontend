@@ -1,6 +1,7 @@
 import React from 'react';
 import './MovieCard.css'
 import { useLocation } from 'react-router-dom';
+import { SAVED_MOVIES } from '../../../utils/urlConstants'
 
 function MovieCard({ card }) {
     const [isLiked, setIsLiked] = React.useState(card.isLiked);
@@ -21,7 +22,7 @@ function MovieCard({ card }) {
 
     function renderButton () {
         var buttonHtml = undefined;
-        if (location.pathname === '/savedMovies') {
+        if (location.pathname === SAVED_MOVIES) {
             buttonHtml = (<button className="button button-type-delete" type="button" />)
         } else (
             buttonHtml = (<button className={isLiked ? classNameLiked : classNameLike} type="button" onClick={toggleLike} />)

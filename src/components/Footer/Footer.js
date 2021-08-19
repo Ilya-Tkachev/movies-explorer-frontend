@@ -1,13 +1,14 @@
 import React from 'react';
 import './Footer.css';
 import { useLocation } from 'react-router-dom';
+import { HOME, MOVIES, SAVED_MOVIES} from '../../utils/urlConstants'
 
 function Footer() {
     const location = useLocation();
 
     const render = () => {
         var footerHtml = undefined
-        if (location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/savedMovies') {
+        if (location.pathname === HOME || location.pathname === MOVIES || location.pathname === SAVED_MOVIES) {
             footerHtml =
                 <div className="footer">
                     <p className="footer__subheadline">Учебный проект Яндекс.Практикум х BeatFilm.</p>
