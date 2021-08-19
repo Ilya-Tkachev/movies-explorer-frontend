@@ -1,5 +1,6 @@
 import '../../index.css';
 import './App.css';
+import ProtectedRoute from '../ProtectedRoutes/ProtectedRoute';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
@@ -17,7 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState(undefined);
   const [isSuccessRegistrationIconOpen, setIsSuccessRegistrationIconOpen] = React.useState(false);
   const [isFailedRegistrationIconOpen, setIsFailedRegistrationIconOpen] = React.useState(false);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
   const [email, setEmail] = React.useState('example@yandex.ru');
   const history = useHistory();
 
@@ -44,7 +45,7 @@ function App() {
   }, []);
 
   function closeAllPopups() {
-    
+
   }
 
   function handleRegistration(email, password) {
@@ -100,17 +101,18 @@ function App() {
             <Login onLogin={handleLogin} tokenCheck={() => { }} />
           </Route>
 
-          <Route exact path='/profile'>
-            <Profile currentUser={currentUser}/>
-          </Route>
 
-          <Route exact path='/movies'>
-            <Movies/>
-          </Route>
+          <ProtectedRoute path='/profile' component={Profile} isLoggedIn={isLoggedIn}
+            currentUser={currentUser}
+          />
 
-          <Route exact path='/savedMovies'>
-            <Movies/>
-          </Route>
+          <ProtectedRoute path='/movies' component={Movies} isLoggedIn={isLoggedIn}
+            currentUser={currentUser}
+          />
+
+          <ProtectedRoute path='/savedMovies' component={Movies} isLoggedIn={isLoggedIn}
+            currentUser={currentUser}
+          />
 
           <Route exact path='/'>
             <Main />
