@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import './Login.css'
 import logoPath from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
+import inputValidator from '../../utils/inputValidator';
 
 function Login({ onLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     function handleEmailChange(event) {
+        event.preventDefault();
+        inputValidator.validate(event.target);
         setEmail(event.target.value);
     }
 
     function handlePasswordChange(event) {
+        event.preventDefault();
+        inputValidator.validate(event.target);
         setPassword(event.target.value);
     }
 
@@ -28,12 +33,12 @@ function Login({ onLogin }) {
             <h2 className="login__title">Рады видеть!</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <p className="login__input-title">E-mail</p>
-                <input id="auth-login-input" className="login__input" placeholder="Почта" name="email" type="email" onChange={handleEmailChange} value={email} required minLength={2} maxLength={40} autoComplete="off"/>
-                <span className="form__input-error" id="auth-login-input-error" />
+                <input id="auth-login-input" className="login__input" placeholder="Почта" name="email" type="email" onChange={handleEmailChange} value={email} required minLength={2} maxLength={40} autoComplete="off" />
+                <span className="form__input-error" id="auth-login-input-error"></span>
 
                 <p className="login__input-title">Пароль</p>
-                <input id="auth-password-input" className="login__input" placeholder="Password" name="password" type="password" onChange={handlePasswordChange} value={password} required minLength={2} maxLength={40} autoComplete="off"/>
-                <span className="form__input-error" id="auth-password-input-error" />
+                <input id="auth-password-input" className="login__input" placeholder="Password" name="password" type="password" onChange={handlePasswordChange} value={password} required minLength={2} maxLength={40} autoComplete="off" />
+                <span className="form__input-error" id="auth-password-input-error"></span>
 
                 <button className="login__button object-hower" type="submit">Войти</button>
             </form>

@@ -1,34 +1,35 @@
 import React from 'react';
 import './Register.css'
 import logoPath from '../../images/logo.svg';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import inputValidator from '../../utils/inputValidator';
 
-function Register({ isSuccessRegistrationIconOpen, isFailedRegistrationIconOpen, onClose, onRegistration }) {
+function Register({ onRegistration }) {
     const [userName, setUserName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const history = useHistory();
 
     function handleUserNameChange(event) {
+        event.preventDefault();
+        inputValidator.validate(event.target);
         setUserName(event.target.value);
     }
 
     function handleEmailChange(event) {
+        event.preventDefault();
+        inputValidator.validate(event.target);
         setEmail(event.target.value);
     }
 
     function handlePasswordChange(event) {
+        event.preventDefault();
+        inputValidator.validate(event.target);
         setPassword(event.target.value);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
         onRegistration(email, password);
-    }
-
-    function closeAndRedirect() {
-        onClose();
-        history.push("/login");
     }
 
     return (

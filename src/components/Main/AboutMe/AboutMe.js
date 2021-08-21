@@ -1,5 +1,6 @@
 import React from 'react';
 import './AboutMe.css';
+import catPath from '../../../images/cat.jpg';
 
 function AboutMe() {
   return (
@@ -18,7 +19,8 @@ function AboutMe() {
             <li><a className="about-me__social-link object-hower" href="https://github.com/" target="_blank" rel="noopener noreferrer">Github</a></li>
           </ul>
         </div>
-        <div className="about-me__photo"></div>
+        
+        <img className="about-me__photo" src={catPath} alt="Изображение кота" />
       </div>
     </div>
   );

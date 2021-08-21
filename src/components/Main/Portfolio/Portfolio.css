@@ -20,7 +20,7 @@
     margin-bottom: 20px;
     padding: 0;
     padding-bottom: 19px;
-    border-bottom: 1px solid #E6E6E6;
+    border-bottom: 1px solid #424242;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,7 +31,7 @@
     line-height: 50px;
     letter-spacing: -0.04em;
     text-decoration: none;
-    color: #000000;
+    color: #FFFFFF;
 }
 
 .portfolio__link-arrow {

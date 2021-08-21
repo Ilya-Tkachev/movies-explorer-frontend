@@ -12,8 +12,12 @@
     align-items: center;
 }
 
+.heder__flex-continer-promo {
+    display: flex;
+    align-items: center;
+}
+
 .header-main {
-    border-bottom: 1px solid black;
     background: #073042;
 }
 
@@ -47,10 +51,6 @@
     .header {
         padding-left: 30px;
         padding-right: 30px;
-    }
-
-    .header-main {
-        border-bottom: none;
     }
 }
 

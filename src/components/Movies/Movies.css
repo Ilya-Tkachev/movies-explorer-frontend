@@ -18,7 +18,8 @@
     height: 36px;
     border: none;
     border-radius: 6px;
-    background: #F9F9F9;
+    background: #2F2F2F;
+    color: #FFFFFF;
     font-size: 12px;
     line-height: 15px;
 }
@@ -36,7 +37,7 @@
 
 @media (max-width: 400px) {
     .movies {
-        padding: 60px 14px 79px;
+        padding: 80px 14px 79px;
     }
 
     .movies__gellery {

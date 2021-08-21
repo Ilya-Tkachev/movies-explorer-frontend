@@ -17,8 +17,6 @@ import { HOME, LOGIN, REGISTER, PROFILE, MOVIES, SAVED_MOVIES} from '../../utils
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({name: 'Коталий', email: 'cat@gmail.com'});
-  const [isSuccessRegistrationIconOpen, setIsSuccessRegistrationIconOpen] = React.useState(false);
-  const [isFailedRegistrationIconOpen, setIsFailedRegistrationIconOpen] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(true);
   const [email, setEmail] = React.useState('example@yandex.ru');
   const history = useHistory();
@@ -91,8 +89,6 @@ function App() {
 
           <Route exact path={REGISTER}>
             <Register
-              isSuccessRegistrationIconOpen={isSuccessRegistrationIconOpen}
-              isFailedRegistrationIconOpen={isFailedRegistrationIconOpen}
               onClose={closeAllPopups}
               onRegistration={handleRegistration}
             />

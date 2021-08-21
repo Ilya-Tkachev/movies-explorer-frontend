@@ -20,26 +20,28 @@ function MovieCard({ card }) {
         }
     }
 
-    function renderButton () {
+    function renderButton() {
         var buttonHtml = undefined;
         if (location.pathname === SAVED_MOVIES) {
-            buttonHtml = (<button className="button button-type-delete" type="button" />)
-        } else (
-            buttonHtml = (<button className={isLiked ? classNameLiked : classNameLike} type="button" onClick={toggleLike} />)
-        )
+            buttonHtml = (<button className="button button-type-delete object-hower" type="button" />);
+        } else {
+            if (isLiked === true) {
+                buttonHtml = (<button className={`button ${classNameLiked} object-hower`} type="button" onClick={toggleLike} />);
+            } else {
+                buttonHtml = (<button className={`button ${classNameLike} object-hower`} type="button" onClick={toggleLike}>Сохранить</button>);
+            }
+        }
         return buttonHtml;
     }
 
     return (
         <section className="movie-card">
-            <img className="movie-card__photo" alt={`Alt ${card.name}`} src={card.imgLink} />
             <div className="movie-card__title-like">
-                <div className="movie-card__title text-overflow-formatting">
-                    {card.name}
-                </div>
-                {renderButton()}
+                <div className="movie-card__title text-overflow-formatting">{card.name}</div>
+                <p className="movie-card__time">{card.time}</p>
             </div>
-            <p className="movie-card__time">{card.time}</p>
+            <img className="movie-card__photo" alt={`Alt ${card.name}`} src={card.imgLink} />
+            {renderButton()}
         </section>
     );
 }

@@ -5,7 +5,7 @@
 
 .header__links {
     text-decoration: none;
-    color: black;
+    color: #FFFFFF;
 }
 
 .header__link {
@@ -19,7 +19,7 @@
 
 .header__link-underlined {
     padding-bottom: 7px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #FFFFFF;
 }
 
 .header__link-fatten {
@@ -34,7 +34,7 @@
 .header__cabinet-icon {
     width: 26px;
     height: 30px;
-    background-color: #F5F5F5;
+    background-color: #313131;
     border-radius: 4px;
 }
 
@@ -54,7 +54,7 @@
     width: 44px;
     height: 44px;
     border: none;
-    background-color: white;
+    background-color: #202020;
 }
 
 @media (max-width: 769px) {
@@ -76,6 +76,9 @@
 
     .header__cabinet {
         margin-top: 416px;
+    }
+    .popup__link__link {
+        margin-right: 17px;
     }
 }
 

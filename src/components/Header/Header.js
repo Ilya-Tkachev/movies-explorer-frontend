@@ -16,10 +16,10 @@ function Header() {
                     <Link to="/">
                         <img src={logoPath} alt="Изображение Лого" className="object-hower" />
                     </Link>
-                    <div className="heder__flex-continer">
+                    <div className="heder__flex-continer-promo">
                         <Link to="/register" className="header__registration-text object-hower">Регистрация</Link>
-                        <button className="header__login-button">
-                            <Link to="/login" className="header__login-button-text object-hower">Войти</Link>
+                        <button className="header__login-button object-hower">
+                            <Link to="/login" className="header__login-button-text">Войти</Link>
                         </button>
                     </div>
                 </header>

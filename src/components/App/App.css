@@ -6,6 +6,8 @@
     display: flex;
     flex-direction: column;
     font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #202020;
+    color: #FFFFFF;
 }
 
 .object-hower {
@@ -18,12 +20,13 @@
 }
 
 .form__input-error {
-    font-size: 12px;
-    line-height: 15px;
-    color: #FF0000;
-    display: block;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    height: 12px;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+    margin-bottom: 10px;
+}
+
+.input-error {
+    color:#EE3465;
 }

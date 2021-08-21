@@ -1,5 +1,5 @@
 .about-project {
-    margin: 110px 70px 110px;
+    padding: 110px 70px 110px;
 }
 
 .about-project__headline {
@@ -8,7 +8,7 @@
     font-size: 22px;
     line-height: 27px;
     padding-bottom: 23px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #DADADA;
 }
 
 .about-project__two-column-text {
@@ -45,6 +45,7 @@
 }
 
 .about-project__progress-backend {
+    color: #000000;
     background-color: #2BE080;
     height: 36px;
     display: flex;
@@ -53,7 +54,7 @@
 }
 
 .about-project__progress-frontend {
-    background-color: #F2F2F2;
+    background-color: #303030;
     height: 36px;
     display: flex;
     justify-content: center;
@@ -66,7 +67,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #A0A0A0;
+    color: #8B8B8B;
 }
 
 @media (max-width: 769px) {

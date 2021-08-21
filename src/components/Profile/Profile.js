@@ -1,6 +1,5 @@
 import React from 'react';
 import './Profile.css'
-import { Link } from 'react-router-dom';
 
 function Profile({currentUser}) {
     return (
@@ -17,7 +16,7 @@ function Profile({currentUser}) {
                 </div>
             </div>
             <button className="profile__button-edit object-hower">Редактировать</button>
-            <Link to="/register" className="profile__link-logout object-hower">Выйти из аккаунта</Link>
+            <button className="profile__button-logout object-hower">Выйти из аккаунта</button>
         </div>
     );
 }

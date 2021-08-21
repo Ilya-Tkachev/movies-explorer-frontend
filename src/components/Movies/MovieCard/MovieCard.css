@@ -1,5 +1,7 @@
 .movie-card {
-    
+    background-color: #222222;
+    border-radius: 6px;
+    text-align: center;
 }
 
 .movie-card__photo {
@@ -7,11 +9,10 @@
 }
 
 .movie-card__title-like {
-    margin-top: 14px;
+    margin: 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 29px;
 }
 
 .movie-card__title {
@@ -21,43 +22,46 @@
 
 .movie-card__time {
     margin: 0;
-    border-top: 1px solid #E8E8E8;
-    padding-top: 6px;
     font-size: 11px;
     line-height: 13px;
     color: #A0A0A0;
 }
 
 .button {
+    padding: 0;
+    margin-top: 18px;
+    margin-bottom: 18px;
     cursor: pointer;
-    background-color: #F5F5F5;
-    background-position: center;
     border: none;
-    border-radius: 50%;
-    width: 30px;
+    border-radius: 30px;
+    width: 100px;
     height: 30px;
 }
 
 .button-type-like {
-    background-image: url('../../../images/heart-white.svg');
+    background-color: #313131;
+    color: #FFFFFF;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 11px;
 }
 
 .button-type-like-pressed {
-    background-image: url('../../../images/heart-red.svg');
+    background-color: #EE3465;
+    background-image: url('../../../images/tick.svg');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .button-type-delete {
-    opacity: 0%;
-    transition-duration: 0.7s;
+    background-color: #313131;
     background-image: url('../../../images/cross.svg');
-}
-
-.movie-card:hover .button-type-delete{
-    opacity: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .text-overflow-formatting {
-    width: 220px;
+    max-width: 80%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

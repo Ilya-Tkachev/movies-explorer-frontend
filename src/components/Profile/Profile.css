@@ -1,8 +1,8 @@
 .profile {
-    max-width: 410px;
+    width: 410px;
     display: flex;
     flex-direction: column;
-    margin: auto;
+    align-self: center;
     margin-top: 74px;
 }
 
@@ -47,21 +47,24 @@
 }
 
 .profile__button-edit {
-    padding: unset;
     margin-bottom: 16px;
-    background-color: white;
+    padding: unset;
     border: none;
     cursor: pointer;
     font-size: 13px;
     line-height: 16px;
+    color: #FFFFFF;
+    background-color: unset;
 }
 
-.profile__link-logout {
-    text-align: center;
-    text-decoration: none;
+.profile__button-logout {
+    padding: unset;
+    border: none;
+    cursor: pointer;
     font-size: 13px;
     line-height: 16px;
-    color: #FF004D;
+    color: #EE3465;
+    background-color: unset;
 }
 
 @media (max-width: 769px) {
@@ -76,9 +79,10 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
     .profile {
         margin: 70px 30px 40px;
+        width: 260px;
     }
     .profile__title {
         margin-bottom: 80px;

@@ -11,6 +11,7 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.5s, opacity 0.5s;
+    color: #FFFFFF;
 }
 
 .popup_state_opened {
@@ -20,7 +21,7 @@
 
 .popup__container {
     width: 66%;
-    background-color: white;
+    background-color: #202020;
     position: relative;
     box-sizing: border-box;
     display: flex;
