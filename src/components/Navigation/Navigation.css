@@ -75,7 +75,8 @@
     }
 
     .header__cabinet {
-        margin-top: 416px;
+        margin-top: auto;
+        margin-bottom: 92px;
     }
     .popup__link__link {
         margin-right: 17px;

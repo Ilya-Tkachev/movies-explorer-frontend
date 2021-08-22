@@ -72,7 +72,7 @@
 
 @media (max-width: 769px) {
     .about-project {
-        margin: 90px 50px 90px;
+        padding: 90px 50px 90px;
     }
 
     .about-project__two-column-text {
@@ -84,7 +84,7 @@
 
 @media (max-width: 400px) {
     .about-project {
-        margin: 70px 18px 69px;
+        padding: 70px 18px 69px;
     }
 
     .about-project__headline {

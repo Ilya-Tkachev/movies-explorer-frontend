@@ -2,6 +2,11 @@ import React from 'react';
 import './SearchForm.css';
 
 function SearchForm() {
+    const [movieName, setMovieName] = React.useState('');
+
+    function handleUserNameChange(event) {
+        setMovieName(event.target.value);
+    }
 
     const switchContent = (
         <>
@@ -17,14 +22,14 @@ function SearchForm() {
         <div className="search-form">
             <div className="search-form__elips">
                 <div className="search-form__search-icon"></div>
-                <input className="search-form__form" type="text" placeholder="Фильм"></input>
-                <button className="search-form__button"></button>
+                <input className="search-form__form" type="text" placeholder="Фильм" required autoComplete="off" onChange={handleUserNameChange} value={movieName} />
+                <button className="search-form__button object-hower"></button>
                 <div className="search-form__switcher normal-rezolution">
                     {switchContent}
                 </div>
             </div>
             <div className="search-form__switcher small-rezolution">
-                    {switchContent}
+                {switchContent}
             </div>
         </div>
     );

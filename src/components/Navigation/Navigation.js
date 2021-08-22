@@ -37,7 +37,7 @@ function Navigation() {
         return (
             <div className={`popup ${(isNavigationPopupOpened ? 'popup_state_opened' : '')}`}>
                 <div className="popup__container">
-                    <button className="popup__button-close" type="button" onClick={closeNavifationPopup} />
+                    <button className="popup__button-close object-hower" type="button" onClick={closeNavifationPopup} />
                     <Link to={HOME} className="header__links object-hower" onClick={closeNavifationPopup}>
                         <p className={`header__link ${underline(HOME)}`}>Главная</p>
                     </Link>

@@ -32,6 +32,10 @@
     color: white;
 }
 
+.search-form__form:focus {
+    border-bottom: 1px solid white;
+}
+
 .search-form__button {
     width: 44px;
     height: 34px;
