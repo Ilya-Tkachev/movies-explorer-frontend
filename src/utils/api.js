@@ -2,7 +2,7 @@ class Api {
     constructor(address) {
         this._address = address;
         this._userPath = 'users/me';
-        this._cardsPath = 'movies';
+        this._moviesPath = 'movies';
         this._likesPath = 'likes';
     }
 
@@ -63,13 +63,13 @@ class Api {
         return this._restGet(this._userPath);
     }
 
-    updateUserInfo(name, about) {
-        const body = JSON.stringify({ name, about })
+    updateUserInfo(email, name) {
+        const body = JSON.stringify({ email, name })
         return this._restPatch(this._userPath, body);
     }
 
-    getCardsData() {
-        return this._restGet(this._cardsPath);
+    getSavedMoviesData() {
+        return this._restGet(this._moviesPath);
     }
 
     _postHeaders(body) {
@@ -92,9 +92,9 @@ class Api {
             .catch(this._error);
     }
 
-    saveCard(name, link) {
-        const body = JSON.stringify({ name, link })
-        return this._restPost(this._cardsPath, body);
+    saveMovie(name, link) {
+        const body = JSON.stringify({ name, link }) //TODO here must be changed
+        return this._restPost(this._moviesPath, body);
     }
 
     _deleteHeaders() {
@@ -134,12 +134,8 @@ class Api {
             .catch(this._error);
     }
 
-    likeMovie(movieId) {
-        return this._restPut(`${this._cardsPath}/${this._likesPath}`, movieId);
-    }
-
-    dislikeMovie(movieId) {
-        return this._restDelete(`${this._cardsPath}/${this._likesPath}`, movieId);
+    deleteMovie(movieId) {
+        return this._restDelete(`${this._moviesPath}/${this._likesPath}`, movieId);
     }
 
     authorization(email, password) {
@@ -154,7 +150,7 @@ class Api {
             .then(data => data);
     }
 
-    registretion(email, password) {
+    registretion(email, password, name) {
         const headers = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

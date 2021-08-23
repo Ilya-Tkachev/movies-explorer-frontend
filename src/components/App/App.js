@@ -18,67 +18,87 @@ import { HOME, LOGIN, REGISTER, PROFILE, MOVIES, SAVED_MOVIES} from '../../utils
 function App() {
   const [currentUser, setCurrentUser] = React.useState({name: 'Коталий', email: 'cat@gmail.com'});
   const [isLoggedIn, setIsLoggedIn] = React.useState(true);
-  const [email, setEmail] = React.useState('example@yandex.ru');
+  const [savedMovies, setSavedMovies] = React.useState([]);
+  const [registrationError, setRegistrationError] = React.useState(undefined);
+  const [loginError, setLoginError] = React.useState(undefined);
   const history = useHistory();
+  const TOKEN = 'token';
 
   React.useEffect(() => {
-    /*
-    api.getUserInfo()
-      .then(response => setCurrentUser(response))
-      .catch(err => console.log(err));
-
-    const jwt = localStorage.getItem('token');
-    if (jwt) {
-      api.validate(jwt)
-        .then((responce) => {
-          setEmail(responce.data.email);
+    console.log('App useEffect called');
+    if (localStorage.getItem(TOKEN)) {
+      api.validate()
+        .then((response) => {
           setIsLoggedIn(true);
-          history.push("/");
+          setCurrentUser(response);
+          history.push(HOME);
         })
         .catch(error => {
           console.error(error);
           handleLogout();
         });
     }
-    */
   }, []);
 
-  function closeAllPopups() {
-
+  function handleUpdateUser(email, name) {
+    api.updateUserInfo(email, name)
+      .then(response => setCurrentUser(response))
+      .catch(err => console.log(err));
   }
-
-  function handleRegistration(email, password) {
-    /*
-    api.registretion(email, password)
+  
+  function handleMovieSave(name, url) {
+    api.saveMovie(name, url)
+      .then(response => setSavedMovies([response, ...savedMovies]))
+      .catch(err => console.log(err));
+  }
+  
+  function handleMovieDelete(movieToRemove) {
+    api.deleteMovie(movieToRemove._id)
+      .then(() => setSavedMovies(savedMovies.filter(movie => movie._id !== movieToRemove._id)))
+      .catch(err => console.log(err));
+  }
+  
+  function handleRegistration(email, password, name) {
+    setRegistrationError(undefined);
+    api.registretion(email, password, name)
       .then(() => {
-        setIsSuccessRegistrationIconOpen(true);
+        history.push(LOGIN);
       })
       .catch((error) => {
         console.error(error);
-        setIsFailedRegistrationIconOpen(true);
-        history.push("/register");
+        setRegistrationError(error);
       });
-      */
   }
 
   function handleLogin(email, password) {
-    /*
+    setLoginError(undefined);
     api.authorization(email, password)
       .then(data => {
-        localStorage.setItem('token', data.token);
-        setEmail(email);
+        localStorage.setItem(TOKEN, data.token);
         setIsLoggedIn(true);
-        history.push("/");
+
+        api.getUserInfo()
+          .then(response => setCurrentUser(response))
+          .catch(err => console.log(err));
+
+        api.getSavedMoviesData()
+          .then(initialCards => setSavedMovies(initialCards))
+          .catch(err => console.log(err));
+
+        history.push(SAVED_MOVIES);
       })
-      .catch(error => console.error(error));
-      */
+      .catch((error) => {
+        console.error(error);
+        setLoginError(error);
+      });
   }
 
   function handleLogout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem(TOKEN);
     setIsLoggedIn(false);
-    setEmail('');
-    history.push("/login");
+    setCurrentUser(undefined);
+    setSavedMovies([]);
+    history.push(HOME);
   }
 
   const cards = [
@@ -132,31 +152,33 @@ function App() {
 
           <Route exact path={REGISTER}>
             <Register
-              onClose={closeAllPopups}
-              onRegistration={handleRegistration}
+              onRegistration={handleRegistration} 
+              registrationError={registrationError}
             />
           </Route>
 
           <Route exact path={LOGIN}>
-            <Login onLogin={handleLogin} tokenCheck={() => { }} />
+            <Login 
+              onLogin={handleLogin} 
+              loginError={loginError}
+            />
           </Route>
 
-
           <ProtectedRoute path={PROFILE} component={Profile} 
-            isLoggedIn={isLoggedIn}
             currentUser={currentUser}
+            onUserUpdate={handleUpdateUser}
+            onLogout={handleLogout}
           />
 
           <ProtectedRoute path={MOVIES} component={Movies} 
-            isLoggedIn={isLoggedIn}
             currentUser={currentUser}
-            cards={cards}
+            onMovieSave={(movieToSave) => handleMovieSave(movieToSave)}
           />
 
           <ProtectedRoute path={SAVED_MOVIES} component={Movies} 
-            isLoggedIn={isLoggedIn}
             currentUser={currentUser}
             cards={cards}
+            onMovieDeleted={(movieToSave) => handleMovieDelete(movieToSave)}
           />
 
           <Route exact path={HOME}>
