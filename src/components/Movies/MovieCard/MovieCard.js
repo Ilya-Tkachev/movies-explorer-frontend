@@ -1,35 +1,31 @@
 import React from 'react';
 import './MovieCard.css'
 import { useLocation } from 'react-router-dom';
-import { SAVED_MOVIES } from '../../../utils/urlConstants'
+import { MOVIES } from '../../../utils/urlConstants'
 
-function MovieCard({ card }) {
-    const [isLiked, setIsLiked] = React.useState(card.isLiked);
+function MovieCard({ movie, onMovieSave, onMovieDelete, isSaved }) {
     const location = useLocation();
+    const classNameLike = "button button-type-like ";
+    const classNameLiked = "button button-type-like-pressed";
 
-    var classNameLike = "button button-type-like ";
-    var classNameLiked = "button button-type-like-pressed";
+    function handleMovieSave() {
+        onMovieSave(movie);
+    }
 
-    function toggleLike() { // Просто заглушка, что бы проверить, как верстка рабоатет
-        if (isLiked) {
-            card.isLiked = false;
-            setIsLiked(false)
-        } else {
-            card.isLiked = true;
-            setIsLiked(true)
-        }
+    function handleMoviesDelete() {
+        onMovieDelete(movie);
     }
 
     function renderButton() {
         var buttonHtml = undefined;
-        if (location.pathname === SAVED_MOVIES) {
-            buttonHtml = (<button className="button button-type-delete object-hower" type="button" />);
-        } else {
-            if (isLiked === true) {
-                buttonHtml = (<button className={`button ${classNameLiked} object-hower`} type="button" onClick={toggleLike} />);
+        if (location.pathname === MOVIES) {
+            if (isSaved) {
+                buttonHtml = (<button className={`button ${classNameLiked} object-hower`} type="button" onClick={handleMoviesDelete}/>);
             } else {
-                buttonHtml = (<button className={`button ${classNameLike} object-hower`} type="button" onClick={toggleLike}>Сохранить</button>);
+                buttonHtml = (<button className={`button ${classNameLike} object-hower`} type="button" onClick={handleMovieSave}>Сохранить</button>);
             }
+        } else {
+            buttonHtml = (<button className="button button-type-delete object-hower" type="button" onClick={handleMoviesDelete}/>);
         }
         return buttonHtml;
     }
@@ -37,10 +33,12 @@ function MovieCard({ card }) {
     return (
         <section className="movie-card">
             <div className="movie-card__title-like">
-                <div className="movie-card__title text-overflow-formatting">{card.name}</div>
-                <p className="movie-card__time">{card.time}</p>
+                <div className="movie-card__title text-overflow-formatting">{movie.nameRU}</div>
+                <p className="movie-card__time">{movie.duration} минут</p>
             </div>
-            <img className="movie-card__photo" alt={`Alt ${card.name}`} src={card.imgLink} />
+            <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
+                <img className="movie-card__photo" alt={`Alt ${movie.nameRU}`} src={movie.image} />
+            </a>
             {renderButton()}
         </section>
     );

@@ -46,6 +46,11 @@
     font-weight: 500;
 }
 
+.profile__error-text {
+    margin-top: 30px;
+    color: red;
+}
+
 .profile__button-edit {
     margin-bottom: 16px;
     padding: unset;
@@ -65,6 +70,29 @@
     line-height: 16px;
     color: #EE3465;
     background-color: unset;
+}
+
+.profile__button-save {
+    margin-top: 76px;
+    margin-bottom: 16px;
+    height: 45px;
+    border: none;
+    border-radius: 3px;
+    background-color: #4285F4;
+    color: white;
+    cursor: pointer;
+}
+
+.profile__button-disabled {
+    background-color: gray;
+}
+
+.profile-input {
+    
+}
+
+.profile-input-section {
+
 }
 
 @media (max-width: 769px) {

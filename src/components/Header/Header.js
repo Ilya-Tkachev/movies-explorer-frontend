@@ -18,9 +18,9 @@ function Header() {
                     </Link>
                     <div className="heder__flex-continer-promo">
                         <Link to="/register" className="header__registration-text object-hower">Регистрация</Link>
-                        <button className="header__login-button object-hower">
-                            <Link to="/login" className="header__login-button-text">Войти</Link>
-                        </button>
+                        <Link to="/login" className="header__login-button-text">
+                            <button className="header__login-button object-hower">Войти</button>
+                        </Link>
                     </div>
                 </header>
             )

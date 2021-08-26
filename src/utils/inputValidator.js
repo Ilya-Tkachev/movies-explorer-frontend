@@ -2,7 +2,13 @@ class InputValidator {
     _inputInvalidClass = 'input-error';
 
     validate (input) {
-        input.validity.valid ? this._hideError(input) : this._showError(input);
+        if (input.validity.valid) {
+            this._hideError(input);
+            return true;
+        } else {
+            this._showError(input);
+            return false;
+        }
     }
     
     _showError(input) {
