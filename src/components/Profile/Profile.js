@@ -11,8 +11,8 @@ function Profile({ onUserUpdate, onLogout, userUpdateError }) {
     const [edditMode, setEdditMode] = React.useState(false);
 
     React.useEffect(() => {
-        setUserNameInput({ value: currentUser.name, valid: false });
-        setEmailInput({ value: currentUser.email, valid: false });
+        setUserNameInput({ value: currentUser.name, valid: true });
+        setEmailInput({ value: currentUser.email, valid: true });
     }, [currentUser])
 
     const buttonDisabled = " profile__button-disabled";
@@ -32,13 +32,16 @@ function Profile({ onUserUpdate, onLogout, userUpdateError }) {
         event.preventDefault();
         setEmailInput({
             value: event.target.value,
-            valid: inputValidator.validate(event.target)
+            valid: inputValidator.validate(event.target) // тут нужен кастомный валидатор
         });
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        onUserUpdate(userNameInput.value, emailInput.value);
+        //Не проверяю на изменения в формах т.к. нету кнопки отменить редактирование и сохранить пользователя неизмененным единственный способ закрыть режим редактирования
+        if (currentUser.name !== userNameInput.value || currentUser.email !== emailInput.value) {
+            onUserUpdate(emailInput.value, userNameInput.value);
+        }
         if (userUpdateError === undefined) {
             toggleEdditMode();
         }
@@ -50,7 +53,7 @@ function Profile({ onUserUpdate, onLogout, userUpdateError }) {
 
     return (
         <div className="profile">
-            <h1 className="profile__title">Привет, {userNameInput.value?.split(' ')[0]}</h1>
+            <h1 className="profile__title">Привет, {currentUser?.name?.split(' ')[0]}</h1>
             <div className="profile__user-data">
                 <div className="profile__user-data-name">
                     <p className="profile__text profile__text-weight-500">Имя</p>

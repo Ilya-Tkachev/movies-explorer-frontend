@@ -46,7 +46,6 @@ function App() {
     setUserUpdateError(undefined);
     mainApi.updateUserInfo(email, name)
       .then((response) => {
-        console.log(response);
         setCurrentUser(response);
       })
       .catch(error => {

@@ -48,7 +48,8 @@ function Register({ onRegistration, registrationError }) {
             <h2 className="registration__title">Добро пожаловать!</h2>
             <form className="registration-form" onSubmit={handleSubmit}>
                 <p className="registration__input-title">Имя</p>
-                <input id="registration-name-input" className="registration__input" placeholder="Name" name="name" type="text" onChange={handleUserNameChange} value={userNameInput.value} required minLength={2} maxLength={50} autoComplete="off" />
+                <input id="registration-name-input" className="registration__input" placeholder="Name" name="name" type="text" onChange={handleUserNameChange} value={userNameInput.value} required minLength={2} maxLength={50} autoComplete="off" 
+                    pattern="^[a-zA-ZА-Яа-яЁё\s]+$"/>
                 <span className="form__input-error" id="registration-name-input-error" />
 
                 <p className="registration__input-title">E-mail</p>

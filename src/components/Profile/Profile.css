@@ -88,7 +88,11 @@
 }
 
 .profile-input {
-    
+    color: #FFFFFF;
+    outline: none;
+    border: none;
+    background-color: unset;
+    border-bottom: 1px solid white;
 }
 
 .profile-input-section {
