@@ -169,6 +169,6 @@ class MainApi {
     }
 }
 
-const mainApi = new MainApi(/*`${window.location.protocol}//api.ilya.diplom.nomoredomains.club`*/ 'http://localhost:3000');
+const mainApi = new MainApi(`${window.location.protocol}//api.ilya.diplom.nomoredomains.club` /*'http://localhost:3000'*/);
 
 export default mainApi;
