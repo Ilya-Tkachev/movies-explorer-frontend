@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { useLocation } from 'react-router-dom';
-import { HOME, MOVIES, SAVED_MOVIES} from '../../utils/urlConstants'
+import { HOME, MOVIES, SAVED_MOVIES} from '../../utils/Constants'
 
 function Footer() {
     const location = useLocation();

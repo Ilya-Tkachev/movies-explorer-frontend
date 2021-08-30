@@ -30,3 +30,22 @@
 .input-error {
     color:#EE3465;
 }
+
+.visible {
+    display: block;
+    animation: fadeIn linear .6s;
+}
+
+.invisible {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+
+@keyframes fadeOut { /*animation: fadeOut 1s ease-in 3s forwards;*/
+    from { opacity: 1;}
+    to { opacity: 0;}
+}

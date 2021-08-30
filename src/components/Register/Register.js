@@ -5,31 +5,43 @@ import { Link } from 'react-router-dom';
 import inputValidator from '../../utils/inputValidator';
 
 function Register({ onRegistration }) {
-    const [userName, setUserName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState(undefined);
+    const [userNameInput, setUserNameInput] = React.useState({ value: '', valid: false });
+    const [emailInput, setEmailInput] = React.useState({ value: '', valid: false });
+    const [passwordInput, setPasswordInput] = React.useState({ value: '', valid: false });
+    const buttonDisabled = " registration__button-disabled";
+    var isFormValid = (userNameInput.valid && emailInput.valid && passwordInput.valid);
 
     function handleUserNameChange(event) {
         event.preventDefault();
-        inputValidator.validate(event.target);
-        setUserName(event.target.value);
+        setUserNameInput({
+            value: event.target.value,
+            valid: inputValidator.validate(event.target)
+        });
     }
 
     function handleEmailChange(event) {
         event.preventDefault();
-        inputValidator.validate(event.target);
-        setEmail(event.target.value);
+        setEmailInput({
+            value: event.target.value,
+            valid: inputValidator.validate(event.target)
+        });
     }
 
     function handlePasswordChange(event) {
         event.preventDefault();
-        inputValidator.validate(event.target);
-        setPassword(event.target.value);
+        setPasswordInput({
+            value: event.target.value,
+            valid: inputValidator.validate(event.target)
+        });
     }
 
     function handleSubmit(event) {
+        setLoading(true);
         event.preventDefault();
-        onRegistration(email, password);
+        setError(undefined);
+        onRegistration(emailInput.value, passwordInput.value, userNameInput.value, setError);
     }
 
     return (
@@ -40,23 +52,26 @@ function Register({ onRegistration }) {
             <h2 className="registration__title">Добро пожаловать!</h2>
             <form className="registration-form" onSubmit={handleSubmit}>
                 <p className="registration__input-title">Имя</p>
-                <input id="registration-name-input" className="registration__input" placeholder="Name" name="name" type="text" onChange={handleUserNameChange} value={userName} required minLength={2} maxLength={50} autoComplete="off"/>
+                <input id="registration-name-input" className="registration__input" placeholder="Name" name="name" type="text" onChange={handleUserNameChange} value={userNameInput.value} required minLength={2} maxLength={50} autoComplete="off"
+                    pattern="^[a-zA-ZА-Яа-яЁё\s]+$" disabled={loading} />
                 <span className="form__input-error" id="registration-name-input-error" />
 
                 <p className="registration__input-title">E-mail</p>
-                <input id="registration-email-input" className="registration__input" placeholder="Почта" name="email" type="email" onChange={handleEmailChange} value={email} required minLength={2} maxLength={40} autoComplete="off"/>
+                <input id="registration-email-input" className="registration__input" placeholder="Почта" name="email" type="email" onChange={handleEmailChange} value={emailInput.value} required minLength={2} maxLength={40} autoComplete="off" disabled={loading} />
                 <span className="form__input-error" id="registration-email-input-error" />
 
                 <p className="registration__input-title">Пароль</p>
-                <input id="registration-password-input" className="registration__input" placeholder="Password" name="password" type="password" onChange={handlePasswordChange} value={password} required minLength={2} maxLength={40} autoComplete="off"/>
+                <input id="registration-password-input" className="registration__input" placeholder="Password" name="password" type="password" onChange={handlePasswordChange} value={passwordInput.value} required minLength={2} maxLength={40} autoComplete="off"
+                    disabled={loading} />
                 <span className="form__input-error" id="registration-password-input-error" />
-                
-                <button className="registration__button object-hower" type="submit">Зарегистрироваться</button>
+
+                <button className={`registration__button object-hower ${isFormValid ? '' : buttonDisabled}`} disabled={!isFormValid || loading} type="submit">Зарегистрироваться</button>
             </form>
             <p className="registration__text">
                 Уже зарегистрированы? &ensp;
                 <Link to="/login" className="registration__link object-hower">Войти</Link>
             </p>
+            {error && <p className='registration__text registration__error-text'>{error}</p>}
         </div>
     );
 }

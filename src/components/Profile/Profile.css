@@ -46,6 +46,21 @@
     font-weight: 500;
 }
 
+.profile__error-text {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: red;
+}
+
+.profile__sucess-text {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: lightgreen;
+    animation: fadeOut 1s ease-in 3s forwards;
+}
+
 .profile__button-edit {
     margin-bottom: 16px;
     padding: unset;
@@ -65,6 +80,33 @@
     line-height: 16px;
     color: #EE3465;
     background-color: unset;
+}
+
+.profile__button-save {
+    margin-top: 76px;
+    margin-bottom: 16px;
+    height: 45px;
+    border: none;
+    border-radius: 3px;
+    background-color: #4285F4;
+    color: white;
+    cursor: pointer;
+}
+
+.profile__button-disabled {
+    background-color: gray;
+}
+
+.profile-input {
+    color: #FFFFFF;
+    outline: none;
+    border: none;
+    background-color: unset;
+    border-bottom: 1px solid white;
+}
+
+.profile-input-section {
+
 }
 
 @media (max-width: 769px) {

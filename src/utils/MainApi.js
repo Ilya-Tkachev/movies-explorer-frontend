@@ -1,9 +1,10 @@
-class Api {
+class MainApi {
     constructor(address) {
         this._address = address;
         this._userPath = 'users/me';
-        this._cardsPath = 'movies';
+        this._moviesPath = 'movies';
         this._likesPath = 'likes';
+        this._token = 'token';
     }
 
     _status(response) {
@@ -23,10 +24,9 @@ class Api {
     }
 
     _getHeaders() {
-        const token = localStorage.getItem('token');
         return {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem(this._token)}`
             }
         };
     }
@@ -35,16 +35,14 @@ class Api {
         return fetch(`${this._address}/${endpoint}`, this._getHeaders())
             .then(this._status)
             .then(this._json)
-            .then(data => data)
-            .catch(this._error);
+            .then(data => data);
     }
 
     _patchHeaders(body) {
-        const token = localStorage.getItem('token');
         return {
             method: 'PATCH',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${localStorage.getItem(this._token)}`,
                 'Content-Type': 'application/json'
             },
             body: body
@@ -55,29 +53,27 @@ class Api {
         return fetch(`${this._address}/${endpoint}`, this._patchHeaders(body))
             .then(this._status)
             .then(this._json)
-            .then(data => data)
-            .catch(this._error);
+            .then(data => data);
     }
 
     getUserInfo() {
         return this._restGet(this._userPath);
     }
 
-    updateUserInfo(name, about) {
-        const body = JSON.stringify({ name, about })
+    updateUserInfo(email, name) {
+        const body = JSON.stringify({ email, name })
         return this._restPatch(this._userPath, body);
     }
 
-    getCardsData() {
-        return this._restGet(this._cardsPath);
+    getSavedMoviesData() {
+        return this._restGet(this._moviesPath);
     }
 
     _postHeaders(body) {
-        const token = localStorage.getItem('token');
         return {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${localStorage.getItem(this._token)}`,
                 'Content-Type': 'application/json'
             },
             body: body
@@ -88,21 +84,19 @@ class Api {
         return fetch(`${this._address}/${endpoint}`, this._postHeaders(body))
             .then(this._status)
             .then(this._json)
-            .then(data => data)
-            .catch(this._error);
+            .then(data => data);
     }
 
-    saveCard(name, link) {
-        const body = JSON.stringify({ name, link })
-        return this._restPost(this._cardsPath, body);
+    saveMovie(movie) {
+        const body = JSON.stringify(movie)
+        return this._restPost(this._moviesPath, body);
     }
 
     _deleteHeaders() {
-        const token = localStorage.getItem('token');
         return {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem(this._token)}`
             }
         };
     }
@@ -116,11 +110,10 @@ class Api {
     }
 
     _putHeaders() {
-        const token = localStorage.getItem('token');
         return {
             method: 'PUT',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${localStorage.getItem(this._token)}`,
                 'Content-Type': 'application/json'
             }
         };
@@ -130,16 +123,11 @@ class Api {
         return fetch(`${this._address}/${endpoint}/${id}`, this._putHeaders())
             .then(this._status)
             .then(this._json)
-            .then(data => data)
-            .catch(this._error);
+            .then(data => data);
     }
 
-    likeMovie(movieId) {
-        return this._restPut(`${this._cardsPath}/${this._likesPath}`, movieId);
-    }
-
-    dislikeMovie(movieId) {
-        return this._restDelete(`${this._cardsPath}/${this._likesPath}`, movieId);
+    deleteMovie(movieId) {
+        return this._restDelete(`${this._moviesPath}`, movieId);
     }
 
     authorization(email, password) {
@@ -154,11 +142,11 @@ class Api {
             .then(data => data);
     }
 
-    registretion(email, password) {
+    registretion(email, password, name) {
         const headers = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password, name })
         }
         return fetch(`${this._address}/signup`, headers)
             .then(this._status)
@@ -167,21 +155,20 @@ class Api {
     }
 
     validate() {
-        const token = localStorage.getItem('token');
         const headers = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${localStorage.getItem(this._token)}`,
             }
         }
-        return fetch(`${this._address}/users/me`, headers)
+        return fetch(`${this._address}/${this._userPath}`, headers)
             .then(this._status)
             .then(this._json)
             .then(data => data);
     }
 }
 
-const api = new Api(`${window.location.protocol}//api.ilya.diplom.nomoredomains.club` /*'http://localhost:3000'*/ );
+const mainApi = new MainApi(`${window.location.protocol}//api.ilya.diplom.nomoredomains.club` /*'http://localhost:3000'*/);
 
-export default api;
+export default mainApi;

@@ -10,164 +10,179 @@ import Movies from '../Movies/Movies'
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import NotFound from '../404/NotFound'
-import api from '../../utils/api';
+import mainApi from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { Switch, Route, useHistory } from "react-router-dom";
-import { HOME, LOGIN, REGISTER, PROFILE, MOVIES, SAVED_MOVIES} from '../../utils/urlConstants'
+import { Switch, Route, useHistory, useLocation } from "react-router-dom";
+import { HOME, LOGIN, REGISTER, PROFILE, MOVIES, SAVED_MOVIES, MOVIE_POSTER, PROFILE_UPDATE_SUCCESS, PROFILE_UPDATE_ERROR, SUCCESS_MESSAGE } from '../../utils/Constants'
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState({name: 'Коталий', email: 'cat@gmail.com'});
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
-  const [email, setEmail] = React.useState('example@yandex.ru');
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [isLoggedIn, setIsLoggedIn] = React.useState(undefined);
+  const [savedMovies, setSavedMovies] = React.useState(undefined);
+  const [allMovies, setAllMovies] = React.useState(undefined);
   const history = useHistory();
+  const TOKEN = 'token';
+  const location = useLocation();
 
   React.useEffect(() => {
-    /*
-    api.getUserInfo()
-      .then(response => setCurrentUser(response))
-      .catch(err => console.log(err));
-
-    const jwt = localStorage.getItem('token');
-    if (jwt) {
-      api.validate(jwt)
-        .then((responce) => {
-          setEmail(responce.data.email);
+    if (localStorage.getItem(TOKEN)) {
+      mainApi.validate()
+        .then((response) => {
+          setCurrentUser(response);
           setIsLoggedIn(true);
-          history.push("/");
+          history.push((location.pathname === LOGIN || location.pathname === REGISTER) ? HOME : location.pathname);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
           handleLogout();
         });
     }
-    */
   }, []);
 
-  function closeAllPopups() {
-
+  function handleUpdateUser(email, name, onUserUpdate, setLoading) {
+    mainApi.updateUserInfo(email, name)
+      .then((response) => {
+        setCurrentUser(response);
+        onUserUpdate({ type: PROFILE_UPDATE_SUCCESS, message: SUCCESS_MESSAGE });
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error(error);
+        onUserUpdate({ type: PROFILE_UPDATE_ERROR, message: error.message });
+        setLoading(false);
+      });
   }
 
-  function handleRegistration(email, password) {
-    /*
-    api.registretion(email, password)
-      .then(() => {
-        setIsSuccessRegistrationIconOpen(true);
+  function handleMovieSave(movieToSave) {
+    mainApi.saveMovie(movieToSave)
+      .then(response => setSavedMovies([response, ...savedMovies]))
+      .catch(err => console.error(err));
+  }
+
+  function handleMovieDelete(movieId) {
+    mainApi.deleteMovie(movieId)
+      .then(() => setSavedMovies(savedMovies.filter(movie => movie._id !== movieId)))
+      .catch(err => console.error(err));
+  }
+
+  function handleRegistration(email, password, name, setError, setLoading) {
+    handleLogout();
+    mainApi.registretion(email, password, name)
+      .then(() => handleLogin(email, password, setLoading))
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+        setLoading(false);
+      });
+  }
+
+  function handleLogin(email, password, setError, setLoading) {
+    mainApi.authorization(email, password)
+      .then(data => {
+        localStorage.setItem(TOKEN, data.token);
+        setIsLoggedIn(true);
+
+        mainApi.getUserInfo()
+          .then((response) => { setCurrentUser(response); })
+          .catch(err => console.error(err));
+
+        setLoading(false);
+        history.push(MOVIES);
       })
       .catch((error) => {
         console.error(error);
-        setIsFailedRegistrationIconOpen(true);
-        history.push("/register");
+        setError(error.message);
+        setLoading(false);
       });
-      */
-  }
-
-  function handleLogin(email, password) {
-    /*
-    api.authorization(email, password)
-      .then(data => {
-        localStorage.setItem('token', data.token);
-        setEmail(email);
-        setIsLoggedIn(true);
-        history.push("/");
-      })
-      .catch(error => console.error(error));
-      */
   }
 
   function handleLogout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem(TOKEN);
     setIsLoggedIn(false);
-    setEmail('');
-    history.push("/login");
+    setCurrentUser(undefined);
+    setAllMovies([]);
+    setSavedMovies([]);
+    history.push(HOME);
   }
 
-  const cards = [
-    {
-        _id: 1,
-        name: 'Время',
-        link: 'https://www.kinopoisk.ru/film/517988/',
-        imgLink: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/2a19ad11-c1d9-452b-a06a-85f90790fe10/960x960',
-        isLiked: false,
-        time: '1ч 53м'
-    },
-    {
-        _id: 2,
-        name: 'Время',
-        link: 'https://www.kinopoisk.ru/film/517988/',
-        imgLink: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/2a19ad11-c1d9-452b-a06a-85f90790fe10/960x960',
-        isLiked: false,
-        time: '1ч 53м'
-    },
-    {
-        _id: 3,
-        name: 'Время',
-        link: 'https://www.kinopoisk.ru/film/517988/',
-        imgLink: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/2a19ad11-c1d9-452b-a06a-85f90790fe10/960x960',
-        isLiked: false,
-        time: '1ч 53м'
-    },
-    {
-        _id: 4,
-        name: 'Время',
-        link: 'https://www.kinopoisk.ru/film/517988/',
-        imgLink: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/2a19ad11-c1d9-452b-a06a-85f90790fe10/960x960',
-        isLiked: false,
-        time: '1ч 53м'
-    },
-    {
-        _id: 5,
-        name: 'Время',
-        link: 'https://www.kinopoisk.ru/film/517988/',
-        imgLink: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/2a19ad11-c1d9-452b-a06a-85f90790fe10/960x960',
-        isLiked: false,
-        time: '1ч 53м'
-    },
-];
+  function onLoadMovies(setError) {
+    moviesApi.getMovies()
+      .then(data => {
+        data.forEach(movie => {
+          //We don't store in our DB all image info, only URLs so need to repack a little.
+          movie.image = MOVIE_POSTER + movie.image.url;
+          movie.thumbnail = MOVIE_POSTER + (movie.image?.formats?.thumbnail?.url ?? movie.image.url);
+          //Store original external id
+          movie.movieId = movie.id;
+          movie.id = undefined;
+          movie.created_at = undefined;
+          movie.updated_at = undefined;
+        });
+        setAllMovies(data);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  }
+
+  function onLoadSavedMovies(setError) {
+    mainApi.getSavedMoviesData()
+      .then(data => setSavedMovies(data))
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  }
 
   return (
     <div className="page">
+      <Header isLoggedIn={isLoggedIn} />
       <CurrentUserContext.Provider value={currentUser}>
-        <Header />
         <Switch>
 
-          <Route exact path={REGISTER}>
+          <Route path={REGISTER}>
             <Register
-              onClose={closeAllPopups}
               onRegistration={handleRegistration}
             />
           </Route>
 
-          <Route exact path={LOGIN}>
-            <Login onLogin={handleLogin} tokenCheck={() => { }} />
+          <Route path={LOGIN}>
+            <Login
+              onLogin={handleLogin}
+            />
           </Route>
 
-
-          <ProtectedRoute path={PROFILE} component={Profile} 
-            isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
+          <ProtectedRoute path={PROFILE} component={Profile} isLoggedIn={isLoggedIn}
+            onUserUpdate={handleUpdateUser}
+            onLogout={handleLogout}
           />
 
-          <ProtectedRoute path={MOVIES} component={Movies} 
-            isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
-            cards={cards}
+          <ProtectedRoute path={MOVIES} component={Movies} isLoggedIn={isLoggedIn}
+            onMovieSave={(movie) => handleMovieSave(movie)}
+            onMovieDelete={(movieId) => handleMovieDelete(movieId)}
+            onLoadMovies={onLoadMovies}
+            onLoadSavedMovies={onLoadSavedMovies}
+            allMovies={allMovies}
+            savedMovies={savedMovies}
           />
 
-          <ProtectedRoute path={SAVED_MOVIES} component={Movies} 
-            isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
-            cards={cards}
+          <ProtectedRoute path={SAVED_MOVIES} component={Movies} isLoggedIn={isLoggedIn}
+            onMovieDelete={(movieId) => handleMovieDelete(movieId)}
+            onLoadMovies={onLoadMovies}
+            onLoadSavedMovies={onLoadSavedMovies}
+            allMovies={allMovies}
+            savedMovies={savedMovies}
           />
 
-          <Route exact path={HOME}>
-            <Main />
-          </Route>
+          <Route path={HOME} component={Main} />
 
           <Route component={NotFound} />
 
         </Switch>
-        <Footer />
       </CurrentUserContext.Provider>
+      <Footer />
     </div>
   );
 }

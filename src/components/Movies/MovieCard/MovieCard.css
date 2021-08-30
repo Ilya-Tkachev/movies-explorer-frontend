@@ -1,7 +1,10 @@
 .movie-card {
     background-color: #222222;
     border-radius: 6px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .movie-card__photo {
@@ -13,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 90%;
 }
 
 .movie-card__title {
@@ -23,7 +27,7 @@
 .movie-card__time {
     margin: 0;
     font-size: 11px;
-    line-height: 13px;
+    line-height: 16px;
     color: #A0A0A0;
 }
 
@@ -61,7 +65,7 @@
 }
 
 .text-overflow-formatting {
-    max-width: 80%;
+    max-width: 75%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

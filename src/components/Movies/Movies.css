@@ -8,7 +8,7 @@
     justify-content: center;
     grid-row-gap: 38px;
     grid-column-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 }
 
 .movies__more {
@@ -43,6 +43,7 @@
     .movies__gellery {
         grid-row-gap: 30px;
         grid-column-gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
     .movies__more {
