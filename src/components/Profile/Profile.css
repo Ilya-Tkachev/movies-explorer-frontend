@@ -47,8 +47,18 @@
 }
 
 .profile__error-text {
-    margin-top: 30px;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 30px;
     color: red;
+}
+
+.profile__sucess-text {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: lightgreen;
+    animation: fadeOut 1s ease-in 3s forwards;
 }
 
 .profile__button-edit {

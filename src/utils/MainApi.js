@@ -35,8 +35,7 @@ class MainApi {
         return fetch(`${this._address}/${endpoint}`, this._getHeaders())
             .then(this._status)
             .then(this._json)
-            .then(data => data)
-            .catch(this._error);
+            .then(data => data);
     }
 
     _patchHeaders(body) {
@@ -54,8 +53,7 @@ class MainApi {
         return fetch(`${this._address}/${endpoint}`, this._patchHeaders(body))
             .then(this._status)
             .then(this._json)
-            .then(data => data)
-            .catch(this._error);
+            .then(data => data);
     }
 
     getUserInfo() {
@@ -86,8 +84,7 @@ class MainApi {
         return fetch(`${this._address}/${endpoint}`, this._postHeaders(body))
             .then(this._status)
             .then(this._json)
-            .then(data => data)
-            .catch(this._error);
+            .then(data => data);
     }
 
     saveMovie(movie) {
@@ -126,8 +123,7 @@ class MainApi {
         return fetch(`${this._address}/${endpoint}/${id}`, this._putHeaders())
             .then(this._status)
             .then(this._json)
-            .then(data => data)
-            .catch(this._error);
+            .then(data => data);
     }
 
     deleteMovie(movieId) {
@@ -173,6 +169,6 @@ class MainApi {
     }
 }
 
-const mainApi = new MainApi(`${window.location.protocol}//api.ilya.diplom.nomoredomains.club` /*'http://localhost:3000'*/);
+const mainApi = new MainApi(/*`${window.location.protocol}//api.ilya.diplom.nomoredomains.club`*/ 'http://localhost:3000');
 
 export default mainApi;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
-import { HOME } from '../../utils/urlConstants'
+import { HOME } from '../../utils/Constants';
 
 function ProtectedRoute({ component: Component, ...props }) {
     return (

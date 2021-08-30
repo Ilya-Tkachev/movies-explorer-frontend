@@ -43,6 +43,7 @@
     .movies__gellery {
         grid-row-gap: 30px;
         grid-column-gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
     .movies__more {

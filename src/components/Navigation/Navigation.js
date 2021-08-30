@@ -3,7 +3,7 @@ import './Navigation.css'
 import './Popup.css'
 import { Link, useLocation } from 'react-router-dom';
 import menuIconPath from '../../images/menu-icon.svg';
-import { HOME, PROFILE, MOVIES, SAVED_MOVIES} from '../../utils/urlConstants'
+import { HOME, PROFILE, MOVIES, SAVED_MOVIES} from '../../utils/Constants'
 
 function Navigation() {
     const [isNavigationPopupOpened, setIsNavigationPopupOpened] = React.useState(false);

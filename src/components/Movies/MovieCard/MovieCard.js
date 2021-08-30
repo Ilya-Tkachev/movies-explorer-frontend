@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieCard.css'
 import { useLocation } from 'react-router-dom';
-import { MOVIES } from '../../../utils/urlConstants'
+import { MOVIES } from '../../../utils/Constants'
 
 function MovieCard({ movie, onMovieSave, onMovieDelete, isSaved }) {
     const location = useLocation();
@@ -13,19 +13,19 @@ function MovieCard({ movie, onMovieSave, onMovieDelete, isSaved }) {
     }
 
     function handleMoviesDelete() {
-        onMovieDelete(movie);
+        onMovieDelete(movie._id);
     }
 
     function renderButton() {
         var buttonHtml = undefined;
         if (location.pathname === MOVIES) {
             if (isSaved) {
-                buttonHtml = (<button className={`button ${classNameLiked} object-hower`} type="button" onClick={handleMoviesDelete}/>);
+                buttonHtml = (<button className={`button ${classNameLiked} object-hower`} type="button" onClick={handleMoviesDelete} />);
             } else {
                 buttonHtml = (<button className={`button ${classNameLike} object-hower`} type="button" onClick={handleMovieSave}>Сохранить</button>);
             }
         } else {
-            buttonHtml = (<button className="button button-type-delete object-hower" type="button" onClick={handleMoviesDelete}/>);
+            buttonHtml = (<button className="button button-type-delete object-hower" type="button" onClick={handleMoviesDelete} />);
         }
         return buttonHtml;
     }

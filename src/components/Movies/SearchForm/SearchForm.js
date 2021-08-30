@@ -1,28 +1,33 @@
 import React from 'react';
 import './SearchForm.css';
+import { EMPTY_STRING } from '../../../utils/Constants'
 
-function SearchForm({onMovieSearch, onTimeLimit, setMoreCounter}) {
-    const [movieName, setMovieName] = React.useState('');
+function SearchForm({ renderMovies, initailMovieName, initailTimeLimit }) {
+    const [movieName, setMovieName] = React.useState(EMPTY_STRING);
     const [timeLimit, setTimeLimit] = React.useState(false);
+
+    React.useEffect(() => {
+        setMovieName(initailMovieName);
+        setTimeLimit(initailTimeLimit);
+    }, [initailMovieName, initailTimeLimit])
 
     function handleSearchFormChange(event) {
         setMovieName(event.target.value);
     }
 
-    function handleTimeLimitToggle(){
-        setTimeLimit(!timeLimit);
-        onTimeLimit(!timeLimit);
+    function handleTimeLimitToggle(event) {
+        setTimeLimit(event.target.checked);
+        renderMovies(movieName, event.target.checked);
     }
 
     function handleSubmit() {
-        onMovieSearch(movieName);
-        setMoreCounter(0);
+        renderMovies(movieName, timeLimit);
     }
 
     const switchContent = (
         <>
             <label className="switch">
-                <input type="checkBox" onClick={handleTimeLimitToggle}></input>
+                <input type="checkBox" onChange={handleTimeLimitToggle} value={timeLimit} checked={timeLimit}></input>
                 <span className="slider round"></span>
             </label>
             <div className="search-form__switcher-title">Короткометражки</div>

@@ -3,15 +3,26 @@ import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import logoPath from '../../images/logo.svg';
-import { HOME, PROFILE, MOVIES, SAVED_MOVIES} from '../../utils/urlConstants'
+import { LOGIN, REGISTER } from '../../utils/Constants'
 
-function Header() {
+function Header({ isLoggedIn }) {
     const location = useLocation();
 
     const render = () => {
-        var headerHtml = undefined;
-        if (location.pathname === HOME) {
-            headerHtml = (
+        if (location.pathname === LOGIN || location.pathname === REGISTER) {
+            return (<div className="header__empty" />)
+        }
+        if (isLoggedIn) {
+            return (
+                <header className="header">
+                    <Link to="/">
+                        <img src={logoPath} alt="Изображение Лого" className="object-hower" />
+                    </Link>
+                    <Navigation />
+                </header>
+            )
+        } else {
+            return (
                 <header className="header header-main">
                     <Link to="/">
                         <img src={logoPath} alt="Изображение Лого" className="object-hower" />
@@ -24,21 +35,7 @@ function Header() {
                     </div>
                 </header>
             )
-        } else if (location.pathname === PROFILE || location.pathname === MOVIES || location.pathname === SAVED_MOVIES) {
-            headerHtml = (
-                <header className="header">
-                    <Link to="/">
-                        <img src={logoPath} alt="Изображение Лого" className="object-hower"/>
-                    </Link>
-                    <Navigation />
-                </header>
-            )
-        } else {
-            headerHtml = (
-                <div className="header__empty" />
-            )
         }
-        return headerHtml;
     }
 
     return render();
